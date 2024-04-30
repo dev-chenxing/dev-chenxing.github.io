@@ -1,0 +1,31 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    csv (3.3.0)
+    gepub (1.0.16)
+      nokogiri (>= 1.8.2, < 2.0)
+      rubyzip (> 1.1.1, < 2.4)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
+    mini_mime (1.1.5)
+    multi_xml (0.6.0)
+    nokogiri (1.16.4-x64-mingw-ucrt)
+      racc (~> 1.4)
+    racc (1.7.3)
+    rubyzip (2.3.2)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  gepub
+  httparty
+  nokogiri
+
+RUBY VERSION
+   ruby 3.2.3p157
+
+BUNDLED WITH
+   2.4.19
