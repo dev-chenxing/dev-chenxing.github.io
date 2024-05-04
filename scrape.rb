@@ -13,9 +13,12 @@ def scrape_chapter(url)
 
   container = document.css('.cont')
   title = container.css('b').text
-  body = container.css('.contson').children.to_s.strip
-  puts body
-  [title, body]
+  content = '<div>'
+  content += "<h1>#{container.css('b').first.parent}</h1>"
+  content += container.css('.contson').to_s.strip
+  content += '</div>'
+  puts content
+  [title, content]
 end
 
 def parse_chapter_a(chapter_a, base_url)
@@ -59,6 +62,7 @@ def scrape(book_url, base_url, title, author, contributors)
          else
            create_csv(book_url, title, base_url)
          end
+  # body = create_csv(book_url, title, base_url)
   generate_epub(book_url, title, author, contributors, body)
 end
 
