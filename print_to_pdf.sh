@@ -1,1 +1,1 @@
-SumatraPDF -print-to-default '女仙外史.epub'
+mutool convert -o '女仙外史.pdf' '女仙外史.epub'
