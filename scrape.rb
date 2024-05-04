@@ -46,7 +46,8 @@ end
 
 def read_csv(title)
   body = []
-  CSV.foreach(File.expand_path("#{title}.csv", __dir__)) do |chapter|
+  file = File.expand_path("#{title}.csv", __dir__)
+  CSV.foreach(file) do |chapter|
     body.push(chapter)
   end
   body

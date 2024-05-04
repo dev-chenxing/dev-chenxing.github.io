@@ -2,7 +2,7 @@
 
 require 'gepub'
 
-def generate_epub(url, title, author, contributors, _)
+def generate_epub(url, title, author, contributors, chapters)
   book = GEPUB::Book.new
   book.identifier = url
   book.title = title
@@ -51,6 +51,12 @@ def generate_epub(url, title, author, contributors, _)
       </body>
       </html>
     MESSAGE
+
+    chapters.each_with_index do |chapter, index|
+      item_href = "Text/#{index}.xhtml"
+      content = chapter[1]
+      book.add_item(item_href).add_content(StringIO.new(content))
+    end
   end
 
   file = "#{title}.epub"
