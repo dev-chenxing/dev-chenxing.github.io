@@ -27,11 +27,49 @@ def generate_epub(url, title, author, contributors, _)
           <link href="../Styles/style.css" rel="stylesheet" type="text/css"/>
           <title>封面</title>
         </head>
-        <body>
-          <div class="cover"><img alt="cover" src="../Images/cover.png"/></div>
+        <body class="center">
+          <img alt="cover" src="../Images/cover.png"/>
         </body>
       </html>
     COVER
+
+    book.add_item('Text/title.xhtml').add_content(StringIO.new(<<~TITLE.chomp))
+      <?xml version="1.0" encoding="utf-8"?>
+      <!DOCTYPE html>
+      <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+        <head>
+          <link href="../Styles/style.css" rel="stylesheet" type="text/css"/>
+          <title>#{title}</title>
+        </head>
+        <body>
+          <div class="center">
+            <h1>#{title}</h1>
+            <hr>
+            <h4>#{author} 著</h4>
+            <hr>
+          </div>
+        </body>
+      </html>
+    TITLE
+
+    book.add_item('Text/message.xhtml').add_content(StringIO.new(<<~MESSAGE.chomp))
+      <?xml version="1.0" encoding="utf-8"?>
+      <!DOCTYPE html>
+      <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+      <head>
+        <link href="../Styles/style.css" rel="stylesheet" type="text/css"/>
+        <title>制作信息</title>
+      </head>
+      <body>
+        <p>仅供个人学习交流使用，禁作商业用途。</p>
+        <br>
+        <div>
+          <p>古诗文网　gushiwen.cn</p>
+          <p>制　　作　陈　刑</p>
+        </div>
+      </body>
+      </html>
+    MESSAGE
   end
 
   file = "#{title}.epub"
