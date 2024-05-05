@@ -1,7 +1,11 @@
+@font-face {
+    font-family: 'simsun';
+    src: url("./fonts/simsun.ttf");
+}
+
 * {
     font-family: 'simsun';
-    color: #312819
-    /* border: 1px solid red; */
+    color: #312819;
 }
 
 body.chapter {

@@ -13,11 +13,10 @@ while getopts ":t:a:" option; do
 	case "${option}" in
 	t) title=${OPTARG} ;;
 	a) author=${OPTARG} ;;
-	*) usage ;;
 	esac
 done
 
-if [[ ! "$title" || ! "$author" ]]; then
+if [[ ! "$title" ]]; then
 	usage
 fi
 
@@ -29,12 +28,17 @@ verticalize() {
 }
 
 title_formatted=$(verticalize $title)
-author_formatted=$(verticalize $author)\\n\\n著
+author_formatted=$(verticalize $author)\\n著
 
 books_dir=$(cat books_dir)
+dir="$books_dir/$title"
+mkdir -p $dir
 
+file=$dir/$title.png
+
+echo "magick $file"
 magick cover_template.png \
 	-resize 430 \
 	-font 'fonts/simsun.ttf' -fill '#312819' -pointsize 36 -gravity North -annotate +128+70 $title_formatted \
 	-font 'fonts/stfangso.ttf' -fill '#312819' -pointsize 18 -gravity North -annotate +128+340 $author_formatted \
-	$books_dir/$title.png
+	$file
