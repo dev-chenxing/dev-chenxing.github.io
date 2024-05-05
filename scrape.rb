@@ -4,6 +4,7 @@ require 'csv'
 require 'httparty'
 require 'nokogiri'
 load 'create_epub.rb'
+load 'utils.rb'
 
 def scrape_chapter(url)
   response = HTTParty.get(url)
@@ -35,7 +36,7 @@ def create_csv(book_url, title, base_url)
   return unless response.code == 200
 
   body = []
-  CSV.open("#{title}.csv", 'w+', write_headers: false, headers: %w[Title Body]) do |csv|
+  CSV.open(get_file_path(title, 'csv'), 'w+', write_headers: false, headers: %w[Title Body]) do |csv|
     Nokogiri::HTML4(response.body).css('span a').each do |chapter_a|
       chapter = parse_chapter_a(chapter_a, base_url)
       if chapter
@@ -49,7 +50,7 @@ end
 
 def read_csv(title)
   body = []
-  file = File.expand_path("#{title}.csv", __dir__)
+  file = File.expand_path(get_file_path(title, 'csv'), __dir__)
   CSV.foreach(file) do |chapter|
     body.push(chapter)
   end
@@ -57,7 +58,7 @@ def read_csv(title)
 end
 
 def scrape(book_url, base_url, title, author, contributors)
-  body = if File.exist?("#{title}.csv")
+  body = if File.exist?(get_file_path(title, 'csv'))
            read_csv(title)
          else
            create_csv(book_url, title, base_url)

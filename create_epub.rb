@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'gepub'
+load 'utils.rb'
 
 def get_content(body, title)
   '<?xml version="1.0" encoding="utf-8"?>
@@ -70,12 +71,11 @@ def generate_epub(url, title, author, contributors, chapters)
       item_href = "Text/#{index}.xhtml"
       chapter_title = chapter[0]
       content = get_content(chapter[1], chapter_title)
-      book.add_item(item_href).add_content(StringIO.new(content)).toc_text(chapter_title)
+      book.add_item(item_href).add_content(StringIO.new(content))
     end
   end
 
-  book.generate_nav_doc '目录'
-  file = "#{title}.epub"
+  file = get_file_path(title, 'epub')
   book.generate_epub(file)
-  puts "#{title}.epub created"
+  puts "#{file} created"
 end
