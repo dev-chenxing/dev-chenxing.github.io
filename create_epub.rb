@@ -2,6 +2,20 @@
 
 require 'gepub'
 
+def get_content(body, title)
+  '<?xml version="1.0" encoding="utf-8"?>
+  <!DOCTYPE html>
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+    <head>
+      <link href="../Styles/style.css" rel="stylesheet" type="text/css"/>
+      <title>' + title + '</title>
+    </head>
+    <body class="chapter">' +
+      body +
+    '</body>
+  </html>'
+end
+
 def generate_epub(url, title, author, contributors, chapters)
   book = GEPUB::Book.new
   book.identifier = url
@@ -54,11 +68,13 @@ def generate_epub(url, title, author, contributors, chapters)
 
     chapters.each_with_index do |chapter, index|
       item_href = "Text/#{index}.xhtml"
-      content = chapter[1]
-      book.add_item(item_href).add_content(StringIO.new(content))
+      chapter_title = chapter[0]
+      content = get_content(chapter[1], chapter_title)
+      book.add_item(item_href).add_content(StringIO.new(content)).toc_text(chapter_title)
     end
   end
 
+  book.generate_nav_doc '目录'
   file = "#{title}.epub"
   book.generate_epub(file)
   puts "#{title}.epub created"
