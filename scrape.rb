@@ -71,7 +71,7 @@ base_url = 'https://so.gushiwen.cn'
 contributors = %w[古诗文网 陈刑]
 
 booklist = File.expand_path('booklist.csv', __dir__)
-CSV.read(booklist)[1..].each do |book_data|
+CSV.read(booklist).each do |book_data|
   book_url = book_data[0]
   book_title = book_data[1]
   author = book_data[2]

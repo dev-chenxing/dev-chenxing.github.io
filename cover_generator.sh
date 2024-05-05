@@ -2,12 +2,24 @@
 
 # sh cover_generator.sh -t 女仙外史 -a 吕熊
 
-while getopts t:a: flag; do
-	case "${flag}" in
+usage() {
+	echo "Usage: $0 \
+  	[-t title] \
+  	[-a author]" 1>&2
+	exit 1
+}
+
+while getopts ":t:a:" option; do
+	case "${option}" in
 	t) title=${OPTARG} ;;
 	a) author=${OPTARG} ;;
+	*) usage ;;
 	esac
 done
+
+if [[ ! "$title" || ! "$author" ]]; then
+	usage
+fi
 
 shopt -s extglob
 
