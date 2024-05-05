@@ -17,11 +17,11 @@ def get_content(body, title)
   </html>'
 end
 
-def generate_epub(url, title, author, contributors, chapters)
+def generate_epub(url, title, author_list, contributors, chapters)
   book = GEPUB::Book.new
   book.identifier = url
   book.title = title
-  book.creator = author
+  author_list.split(' ').each { |author| book.add_creator author } if author_list
   contributors.each { |contributor| book.add_contributor contributor }
   book.language = 'zh'
 
