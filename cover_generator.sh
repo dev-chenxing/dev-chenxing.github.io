@@ -31,8 +31,10 @@ verticalize() {
 title_formatted=$(verticalize $title)
 author_formatted=$(verticalize $author)\\n\\n著
 
+books_dir=$(cat books_dir)
+
 magick cover_template.png \
 	-resize 430 \
 	-font 'fonts/simsun.ttf' -fill '#312819' -pointsize 36 -gravity North -annotate +128+70 $title_formatted \
 	-font 'fonts/stfangso.ttf' -fill '#312819' -pointsize 18 -gravity North -annotate +128+340 $author_formatted \
-	cover.png
+	$books_dir/$title.png
