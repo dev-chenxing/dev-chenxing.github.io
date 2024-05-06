@@ -1,4 +1,4 @@
-# :books: [罗列书柜](https://amaliegay.github.io)
+# 📚 [罗列书柜](https://amaliegay.github.io)
 
 > 我书架上有的是书，你可随意取一本去
 > 
@@ -6,7 +6,7 @@
 
 ### 吾家藏书五十余卷
 
-:blue_book: 电子书51册
+📘 电子书51册
 
 ## How to use
 
