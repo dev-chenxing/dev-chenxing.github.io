@@ -10,10 +10,27 @@
 
 ## How to use
 
-Simple scripts that converts web pages from gushiwen.cn into EPUBs. 
+A set of scripts for downloading books from https://www.gushiwen.cn, and generating EPUBs. 
 
-- (Windows user) Install [Ruby](https://rubyinstaller.org/)
-- (Windows user) Install Bash, or [Git Bash](https://git-scm.com/downloads)
+You need the following dependencies:
+
+- [Ruby](https://rubyinstaller.org/)
+- Run `bundle install` to install gem dependencies
+- Bash, or [Git Bash](https://git-scm.com/downloads)
+- [ImageMagick](https://imagemagick.org/script/download.php)
+
+The optional `print_to_pdf.sh` script requires [MuPDF](https://mupdf.com/releases/index.html)
+
+### To scrape books
+
+- Add your list of books to scrape to `booklist.csv`
+    - in the format of `url,title,author`
+    - for example, `https://so.gushiwen.cn/guwen/book_46653FD803893E4FECEF70A63E964959.aspx,女仙外史,吕熊`
+    - `url` is the table of contents page of the book
+    - **`author` must not be empty**. If the author is unknown, use `佚名`
+    - **`booklist.csv` must ends with empty last line**
+- Run `sh scrape.sh`
+- The books scraped will be stored in `books`
 
 ## 关于我
  
