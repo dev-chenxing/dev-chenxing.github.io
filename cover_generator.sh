@@ -31,10 +31,11 @@ title_formatted=$(verticalize $title)
 author_formatted=$(verticalize $author)\\n著
 
 books_dir=$(cat books_dir)
-dir="$books_dir/$title"
+extension=png
+dir="$books_dir/$extension"
 mkdir -p $dir
 
-file=$dir/$title.png
+file=$dir/$title.$extension
 
 echo "magick $file"
 magick cover_template.png \
