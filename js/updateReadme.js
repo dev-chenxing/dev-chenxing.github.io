@@ -8,7 +8,7 @@ const books = fs
     .map((file) => file.name);
 
 const getBookLink = (title) => {
-    return `${path}/${title}/${title}.epub`;
+    return `${path}/epub/${title}.epub`;
 };
 
 const getTableOfBooks = () => {
