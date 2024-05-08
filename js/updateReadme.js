@@ -1,14 +1,11 @@
 const fs = require("fs");
 
-const path = "books";
+const path = "books/epub";
 
-const books = fs
-    .readdirSync(path, { withFileTypes: true })
-    .filter((file) => file.isDirectory())
-    .map((file) => file.name);
+const books = fs.readdirSync(path);
 
-const getBookLink = (title) => {
-    return `${path}/epub/${title}.epub`;
+const getBookLink = (file) => {
+    return `${path}/${file}`;
 };
 
 const getTableOfBooks = () => {
