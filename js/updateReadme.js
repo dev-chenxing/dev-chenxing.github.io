@@ -59,7 +59,7 @@ const translate2Chinese = (number) => {
 const generateReadme = () => {
     const fileName = "README.md";
 
-    let content = "# 📚 [罗列书柜](https://amaliegay.github.io)\n\n";
+    let content = "# 📚 [罗列书柜](https://dev-chenxing.github.io)\n\n";
     content += "> 我书架上有的是书，你可随意取一本去\n>\n> 　　　　　　　　　——「醒世恒言·卷三十八」\n\n";
 
     const numberOfBooks = translate2Chinese(books.length);

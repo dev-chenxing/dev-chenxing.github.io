@@ -1,5 +1,5 @@
 {
-    "name": "amaliegay.github.io",
+    "name": "dev-chenxing.github.io",
     "version": "1.0.0",
     "description": "A set of scripts for downloading books from www.gushiwen.cn, and generating EPUBs.",
     "main": "js/updateReadme.js",
