@@ -1,20 +1,22 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    csv (3.3.0)
-    gepub (1.0.16)
+    bigdecimal (4.1.2)
+    csv (3.3.5)
+    gepub (2.0.1)
       nokogiri (>= 1.8.2, < 2.0)
-      rubyzip (> 1.1.1, < 2.4)
-    httparty (0.22.0)
+      rubyzip (>= 3.0, < 3.3)
+    httparty (0.24.2)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     mini_mime (1.1.5)
-    multi_xml (0.6.0)
-    nokogiri (1.16.4-x64-mingw-ucrt)
+    multi_xml (0.9.1)
+      bigdecimal (>= 3.1, < 5)
+    nokogiri (1.19.3-x64-mingw-ucrt)
       racc (~> 1.4)
-    racc (1.7.3)
-    rubyzip (2.3.2)
+    racc (1.8.1)
+    rubyzip (3.2.2)
 
 PLATFORMS
   x64-mingw-ucrt
